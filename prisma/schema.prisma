@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  email         String   @unique
+  username      String   @unique
+  password      String
+  role          String   @default("MENTEE")
+  skills        String[] @default([])
+  interests     String[] @default([])
+  bio           String   @default("")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  mentorMatches Match[]  @relation("MentorMatches")
+  menteeMatches Match[]  @relation("MenteeMatches")
+}
+
+enum MatchStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  COMPLETED
+}
+
+model Match {
+  id               Int         @id @default(autoincrement())
+  senderUsername   String
+  receiverUsername String
+  isMentee         Boolean     @default(true)
+  status           MatchStatus @default(PENDING)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  sender  User @relation("MentorMatches", fields: [senderUsername], references: [username])
+  reciver User @relation("MenteeMatches", fields: [receiverUsername], references: [username])
+}
