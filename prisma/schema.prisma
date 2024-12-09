@@ -16,6 +16,7 @@ model User {
   skills        String[] @default([])
   interests     String[] @default([])
   bio           String   @default("")
+  connection    String[] @default([])
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   mentorMatches Match[]  @relation("MentorMatches")
@@ -26,7 +27,6 @@ enum MatchStatus {
   PENDING
   ACCEPTED
   REJECTED
-  COMPLETED
 }
 
 model Match {
@@ -40,4 +40,6 @@ model Match {
 
   sender  User @relation("MentorMatches", fields: [senderUsername], references: [username])
   reciver User @relation("MenteeMatches", fields: [receiverUsername], references: [username])
+
+  @@unique(fields: [senderUsername, receiverUsername], name: "senderUsername_receiverUsername")
 }

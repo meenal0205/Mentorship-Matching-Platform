@@ -17,6 +17,7 @@ const FormSchema = z.object({
     email: z.string().min(1, 'Email is required').email('Invalid email'),
     password: z.string().min(1, 'Password required').min(8, 'Password must have more than 8 characters'),
     confirmPassword: z.string().min(1, 'Password confirmation is required'),
+    role: z.enum(["MENTEE", "MENTOR"])
 
 }).refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
@@ -47,7 +48,8 @@ const SignUpForm = () => {
             body: JSON.stringify({
                 username: values.username,
                 email: values.email,
-                password: values.password
+                password: values.password,
+                role: values.role
             })
         })
 
@@ -89,6 +91,26 @@ const SignUpForm = () => {
                                     <Input placeholder="mail@example.com"  {...field} className='mb-1' />
                                 </FormControl>
 
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="role"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Role</FormLabel>
+                                <FormControl>
+                                    <select
+                                        {...field}
+                                        className="border-gray-600 text-gray-700 rounded-md p-1.5 border-[1px] w-full"
+                                    >
+                                        <option value="">Select Role</option>
+                                        <option value="MENTEE">Mentee</option>
+                                        <option value="MENTOR">Mentor</option>
+                                    </select>
+                                </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
