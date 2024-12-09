@@ -23,8 +23,8 @@ export async function GET(req: Request) {
             return NextResponse.json({ user: rest, message: "User created successfully" }, { status: 201 })
         }
     }
-    catch (error: any) {
-        return NextResponse.json({ error: error.message || "Internal server error" }, { status: 500 });
+    catch (error) {
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }
 
@@ -43,8 +43,7 @@ export async function POST(req: Request) {
         if (existingUserByEmail) {
             return NextResponse.json({ user: null, message: "User with this email already exists" }, { status: 409 });
         }
-
-        const newUser = await db.user.update({
+        await db.user.update({
             where: { username: username },
             data: { username, email, role, skills, interests, bio },
         });

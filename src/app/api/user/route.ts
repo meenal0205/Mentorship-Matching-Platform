@@ -32,7 +32,7 @@ export async function POST(req: Request) {
             },
         });
 
-        const { password: newUserPassword, ...rest } = newUser
+        const { password: newPassword, ...rest } = newUser
 
         return NextResponse.json({ user: rest, message: "User created successfully" }, { status: 201 })
     }

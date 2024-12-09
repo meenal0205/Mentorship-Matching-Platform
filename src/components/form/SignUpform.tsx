@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { useForm } from "react-hook-form"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '../ui/input';
@@ -18,12 +18,10 @@ const FormSchema = z.object({
     password: z.string().min(1, 'Password required').min(8, 'Password must have more than 8 characters'),
     confirmPassword: z.string().min(1, 'Password confirmation is required'),
     role: z.enum(["MENTEE", "MENTOR"])
-
 }).refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
-    message: ['Password do not match']
-})
-
+    message: 'Password do not match' // Message should be a string, not an array
+});
 
 const SignUpForm = () => {
     const router = useRouter();

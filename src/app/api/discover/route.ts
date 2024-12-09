@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
 import { db } from '@/lib/db';
-import { getUserdetails } from '@/lib/userDetails';
 
 
 export async function GET(request: Request) {
@@ -114,7 +112,7 @@ export async function POST(request: Request) {
         });
 
         return NextResponse.json({ message: "Connection request created" }, { status: 201 });
-    } catch (err: any) {
+    } catch (err) {
         console.error('Error in POST /api/discover:', err);
 
         return NextResponse.json(

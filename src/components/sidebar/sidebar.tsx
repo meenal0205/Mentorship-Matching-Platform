@@ -1,7 +1,7 @@
 'use client'
 
 import { removeUser } from '@/lib/userDetails'
-import { Handshake, LogOut, Router } from 'lucide-react'
+import { Handshake, LogOut } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'

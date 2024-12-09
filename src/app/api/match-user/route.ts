@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db'; // Make sure db is set up with Prisma
-import { getUserdetails } from '@/lib/userDetails'; // Helper function to get user details
 
 function calculateSimilarity(arr1: string[], arr2: string[]): number {
     const commonElements = arr1.filter(element => arr2.includes(element));

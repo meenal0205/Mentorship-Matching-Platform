@@ -1,5 +1,4 @@
 import { db } from "@/lib/db";
-import Email from "next-auth/providers/email";
 import { NextResponse } from "next/server";
 
 
@@ -16,7 +15,7 @@ export async function POST(req: Request) {
             return NextResponse.json({ user: null, message: "User with this email does not exist" }, { status: 409 })
         }
 
-        const newUser = await db.user.update({
+        await db.user.update({
             where: { email },
             data: {
                 username,
@@ -29,15 +28,15 @@ export async function POST(req: Request) {
 
         return NextResponse.json({ message: "User updated successfully" }, { status: 201 })
     }
-    catch (error: any) {
-        return NextResponse.json({ error: error.message || "Internal server error" }, { status: 500 });
+    catch (error) {
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }
 
 
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
-    let username = searchParams.get("username");
+    const username = searchParams.get("username");
     console.log(username)
     if (!username) {
         return NextResponse.json({ error: "Username is required" }, { status: 500 });

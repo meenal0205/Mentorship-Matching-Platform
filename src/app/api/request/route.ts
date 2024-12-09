@@ -1,13 +1,11 @@
 import { db } from "@/lib/db";
-import { error } from "console";
-import { stat } from "fs";
 import { NextResponse } from "next/server";
 
 
 export async function GET(req: Request) {
     try {
         const { searchParams } = new URL(req.url);
-        let email = searchParams.get("email");
+        const email = searchParams.get("email");
         console.log(email)
 
 
