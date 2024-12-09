@@ -51,7 +51,7 @@ const SignInForm = () => {
             router.push('/profile');
         }
         else {
-            console.error('Registration failed.')
+            alert('Wrong username/password.')
         }
 
     }
