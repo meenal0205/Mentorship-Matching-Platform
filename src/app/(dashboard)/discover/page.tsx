@@ -152,7 +152,7 @@ export default function Discover() {
 
             <h2 className='text-sm font-bold text-gray-700'>RESULTS</h2>
             <div className="flex flex-wrap justify-center">
-                {filteredUsers.map((user: any) => (
+                {filteredUsers.length > 0 ? (filteredUsers.map((user: any) => (
                     <div
                         key={user.id}
                         className="flex flex-col items-center  mr-3 mb-3 w-full md:w-1/2  lg:w-1/4 p-4 border-2 border-gray-300 rounded"
@@ -177,7 +177,7 @@ export default function Discover() {
                         </div>
                         <Button className='w-full my-auto ' onClick={() => { sendConnectionRequest(user.username, currentUser || "") }} >Connect</Button>
                     </div>
-                ))}
+                ))) : (<p>No records found</p>)}
             </div>
         </div>
     );
