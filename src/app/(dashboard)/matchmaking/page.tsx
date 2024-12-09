@@ -95,7 +95,7 @@ export default function MatchUsers() {
                                 <p>Skill Similarity: {Math.round(match.skillSimilarity * 100)}%</p>
                                 <p>Interest Similarity: {Math.round(match.interestSimilarity * 100)}%</p>
                                 <p className='mb-2'>Total Similarity: {Math.round(match.totalSimilarity * 100)}%</p>
-                                <Button className='w-full my-auto ' onClick={() => { sendConnectionRequest(match.username, userEmail) }} >Connect</Button>
+                                <Button className='w-full my-auto ' onClick={() => { sendConnectionRequest(match.username, userEmail || "") }} >Connect</Button>
                             </div>
                         ))}
                     </div>) : ("No records found")

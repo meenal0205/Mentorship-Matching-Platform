@@ -72,7 +72,7 @@ const ReceivedRequests = ({ receivedRequests }: receivedRequestsProps) => {
                         receivedRequests.map((req: any, idx: number) => (
                             <div
                                 key={idx}
-                                className="flex items-center justify-between p-3 rounded-lg border border-gray-300 bg-white shadow-sm hover:shadow-md transition-shadow text-gray-700"
+                                className="flex items-center justify-between p-3 rounded-lg border border-gray-300 bg-white shadow-sm hover:shadow-md transition-shadow text-gray-700 mb-3"
                             >
                                 <p className="font-bold">{req?.senderUsername}</p>
                                 <div className="flex items-center gap-3">

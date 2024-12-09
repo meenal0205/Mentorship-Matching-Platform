@@ -1,22 +1,24 @@
-import { Handshake, LogOut } from 'lucide-react'
+'use client'
+
+import { removeUser } from '@/lib/userDetails'
+import { Handshake, LogOut, Router } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const Sidebar = () => {
 
+    const router = useRouter();
 
     const links = [
         { name: "PROFILE", link: "/profile" },
         { name: "DISCOVER", link: "/discover" },
         { name: "MATCHES", link: "/matchmaking" },
-
-
-
-
     ]
-
-
-
+    const logout = () => {
+        removeUser();
+        router.push('sign-in')
+    }
     return (
         <div className="bg-primary h-full flex flex-col items-center gap-y-7 text-white py-8">
 
@@ -41,7 +43,7 @@ const Sidebar = () => {
             <div className="flex-grow"></div>
 
 
-            <LogOut className="mb-4 cursor-pointer hover:opacity-80 transition-opacity duration-200" />
+            <LogOut className="mb-4 cursor-pointer hover:opacity-80 transition-opacity duration-200" onClick={logout} />
         </div>
 
     )

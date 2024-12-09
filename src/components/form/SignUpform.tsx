@@ -154,8 +154,8 @@ const SignUpForm = () => {
 
             <GoogleSignInButton > Sign up with Google </GoogleSignInButton>
 
-            <p className='text-center text-sm text-gray-600 mt-2'>If you dont&apos;t have an account, please&nbsp;
-                <Link href="/sign-up" className='text-blue-400 hover:underline'>Sign up</Link>  </p>
+            <p className='text-center text-sm text-gray-600 mt-2'>Already have an account, please&nbsp;
+                <Link href="/sign-in" className='text-blue-400 hover:underline'>Sign in</Link>  </p>
         </Form>
     )
 }

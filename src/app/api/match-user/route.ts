@@ -9,7 +9,9 @@ function calculateSimilarity(arr1: string[], arr2: string[]): number {
 
 export async function GET(request: Request) {
     try {
-        const currentUser = getUserdetails()?.username;
+        const { searchParams } = new URL(request.url);
+        const currentUser = searchParams.get("email");
+
         if (!currentUser) {
             return NextResponse.json({ error: 'User not authenticated' }, { status: 401 });
         }

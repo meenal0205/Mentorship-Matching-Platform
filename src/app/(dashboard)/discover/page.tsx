@@ -155,7 +155,7 @@ export default function Discover() {
                 {filteredUsers.map((user: any) => (
                     <div
                         key={user.id}
-                        className="flex flex-col items-center mr-3 mb-3 md:w-1/2 lg:w-1/4 p-4 border-2 border-gray-300 rounded"
+                        className="flex flex-col items-center  mr-3 mb-3 w-full md:w-1/2  lg:w-1/4 p-4 border-2 border-gray-300 rounded"
                     >
                         <User2Icon width={40} height={40} className="mb-2" />
                         <p className="text-center">
@@ -175,7 +175,7 @@ export default function Discover() {
                                 ))}
                             </div>
                         </div>
-                        <Button className='w-full my-auto ' onClick={() => { sendConnectionRequest(user.username, currentUser) }} >Connect</Button>
+                        <Button className='w-full my-auto ' onClick={() => { sendConnectionRequest(user.username, currentUser || "") }} >Connect</Button>
                     </div>
                 ))}
             </div>
