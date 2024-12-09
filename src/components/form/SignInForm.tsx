@@ -10,6 +10,7 @@ import Link from 'next/link';
 import GoogleSignInButton from '../GoogleSignInButton';
 
 import { useRouter } from 'next/navigation';
+import { setUser } from '@/lib/userDetails';
 
 
 
