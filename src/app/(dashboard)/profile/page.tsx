@@ -1,14 +1,8 @@
 'use client'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+
 import { getUserdetails } from '@/lib/userDetails'
-import { CheckIcon, X, Eye, Trash, User2Icon, Edit3Icon, Trash2Icon } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import { useForm } from "react-hook-form"
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 import { useRouter } from 'next/navigation'
-import Modal from '@/components/modal'
 import { skilldata } from '@/lib/skill-interest-data'
 import ProfilePage from './components/profile-page'
 import SentRequest from './components/sent-requests'
@@ -17,7 +11,6 @@ import SkillsPage from './components/skills-page'
 import InterestsPage from './components/interests-page'
 
 const UserProfile = () => {
-    const router = useRouter()
     enum Role {
         MENTOR = 'MENTOR',
         MENTEE = 'MENTEE',
